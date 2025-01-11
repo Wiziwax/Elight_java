@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="orange1">#F8754B</color>
+    <color name="background">#FFFFFFFF</color>
+    <color name="outline_color">#999593</color> <!-- Orange outline -->
+    <color name="bottom_nav_icon_colors">#333333</color>
+    <color name="bottom_nav_text_colors">#555555</color>
+
+    <color name="orange">#FF5722</color>
+</resources>

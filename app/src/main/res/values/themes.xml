@@ -1,0 +1,32 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Elight_java" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Other theme attributes -->
+
+        <!-- Status bar color -->
+        <item name="android:statusBarColor">@color/white</item>
+
+        <!-- Navigation bar color -->
+        <item name="android:navigationBarColor">@color/white</item>
+
+        <!-- Make status bar icons dark -->
+        <item name="android:windowLightStatusBar">true</item>
+
+        <!-- Make navigation bar icons dark -->
+        <item name="android:windowLightNavigationBar">true</item>
+    </style>
+
+    <style name="Theme.Elight_java" parent="Base.Theme.Elight_java" />
+
+
+<!--    <style name="Theme.App.Starting" parent="Theme.SplashScreen">-->
+<!--        &lt;!&ndash; Set the splash screen background color &ndash;&gt;-->
+<!--        <item name="windowSplashScreenBackground">@color/white</item>-->
+
+<!--        &lt;!&ndash; Use your app icon - changed to use the full launcher icon &ndash;&gt;-->
+<!--        <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher</item>-->
+
+<!--        &lt;!&ndash; Set the theme that will be used after the splash screen &ndash;&gt;-->
+<!--        <item name="postSplashScreenTheme">@style/Theme.Elight_java</item>-->
+<!--    </style>-->
+</resources>

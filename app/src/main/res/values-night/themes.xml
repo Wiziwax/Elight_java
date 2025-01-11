@@ -1,0 +1,18 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Elight_java" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Other theme attributes -->
+
+        <!-- Status bar color -->
+        <item name="android:statusBarColor">@color/white</item>
+
+        <!-- Navigation bar color -->
+        <item name="android:navigationBarColor">@color/white</item>
+
+        <!-- Make status bar icons dark -->
+        <item name="android:windowLightStatusBar">true</item>
+
+        <!-- Make navigation bar icons dark -->
+        <item name="android:windowLightNavigationBar">true</item>
+    </style>
+</resources>
