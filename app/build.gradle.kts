@@ -45,5 +45,8 @@ dependencies {
     implementation("com.google.android.material:material:1.9.0")
     implementation("androidx.core:core-splashscreen:1.0.1")
     implementation ("me.relex:circleindicator:2.1.6")
+    implementation("com.github.bumptech.glide:glide:4.16.0")
+    implementation("com.google.android.gms:play-services-maps:17.0.1")
+
 
 }

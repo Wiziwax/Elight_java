@@ -1,4 +1,6 @@
-package com.chestnut_java;
+package com.chestnut_java.Activities;
+
+import com.chestnut_java.Entities.ActivityEntry;
 
 import java.util.List;
 public class GroupedActivity {

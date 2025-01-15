@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">Elight_java</string>
+    <string name="category_image">Category Image</string>
+
+
+    <string-array name="nigeria_states">
+        <item>Lagos</item>
+        <item>Rivers</item>
+        <item>Abuja</item>
+        <item>Delta</item>
+        <!-- Add more states as needed -->
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
 </resources>

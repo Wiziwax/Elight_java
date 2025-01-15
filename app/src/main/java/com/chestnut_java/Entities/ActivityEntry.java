@@ -1,6 +1,4 @@
-package com.chestnut_java;
-
-import java.util.List;
+package com.chestnut_java.Entities;
 
 public class ActivityEntry {
     private String description;

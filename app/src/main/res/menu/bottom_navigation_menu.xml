@@ -7,7 +7,7 @@
     <item
         android:id="@+id/navigation_map"
         android:icon="@drawable/baseline_location_on_24"
-        android:title="Map" />
+        android:title="Locations" />
     <item
         android:id="@+id/navigation_activity"
         android:icon="@drawable/activity"

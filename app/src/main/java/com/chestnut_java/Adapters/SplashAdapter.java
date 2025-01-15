@@ -1,4 +1,4 @@
-package com.chestnut_java;
+package com.chestnut_java.Adapters;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,6 +7,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.chestnut_java.R;
+import com.chestnut_java.SplashItem;
+
 import java.util.List;
 
 public class SplashAdapter extends RecyclerView.Adapter<SplashAdapter.SplashViewHolder> {

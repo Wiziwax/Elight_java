@@ -1,4 +1,4 @@
-package com.chestnut_java;
+package com.chestnut_java.Activities;
 
 import android.os.Bundle;
 import android.view.View;
@@ -12,7 +12,7 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.viewpager2.widget.CompositePageTransformer;
 import androidx.viewpager2.widget.ViewPager2;
 
-import com.chestnut_java.ImagePagerAdapter;
+import com.chestnut_java.Adapters.ImagePagerAdapter;
 import com.chestnut_java.R;
 import com.google.android.material.card.MaterialCardView;
 

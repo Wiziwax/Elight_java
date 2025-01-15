@@ -1,4 +1,4 @@
-package com.chestnut_java;
+package com.chestnut_java.Entities;
 
 public class Category {
     private String name;

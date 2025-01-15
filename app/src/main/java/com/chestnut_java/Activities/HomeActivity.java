@@ -1,4 +1,4 @@
-package com.chestnut_java;
+package com.chestnut_java.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,16 +6,21 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.chestnut_java.Entities.Category;
+import com.chestnut_java.Adapters.CategoryAdapter;
+import com.chestnut_java.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -65,10 +70,16 @@ public class HomeActivity extends AppCompatActivity {
                 } else if (itemId == R.id.navigation_activity) {
                     Intent intent = new Intent(HomeActivity.this, ActivityActivity.class);
                     startActivity(intent);
+                    return true;}
+
+                else if (itemId == R.id.navigation_map) {
+                    Intent intent = new Intent(HomeActivity.this, LocationActivity.class);
+                    startActivity(intent);
                     return true;
 
                 } else if (itemId == R.id.navigation_profile) {
-                    // Handle profile navigation
+                    Intent intent = new Intent(HomeActivity.this, DeviceListActivity.class);
+                    startActivity(intent);
                     return true;
                 }
                 return false;
@@ -78,23 +89,46 @@ public class HomeActivity extends AppCompatActivity {
         // Set default selected item
         bottomNavigationView.setSelectedItemId(R.id.navigation_home);
 
+        // Find the CardView by ID
+        CardView mainCardMap = findViewById(R.id.mainCardMap);
+        CardView bottomCard = findViewById(R.id.card2HomeActivity);
+
+        ImageView cardImage = findViewById(R.id.cardImage);
+//        Glide.with(this)
+//                .load("https://example.com/image.jpg") // Replace with your image URL
+//                .into(cardImage);
+
+
+        // Set click listener
+        mainCardMap.setOnClickListener(v -> {
+            // Intent to navigate to another activity
+            Intent intent = new Intent(HomeActivity.this, MarkerActivity.class);
+            startActivity(intent);
+        });
+
+        bottomCard.setOnClickListener(v -> {
+            // Intent to navigate to another activity
+            Intent intent = new Intent(HomeActivity.this, RegisterDeviceActivity.class);
+            startActivity(intent);
+        });
+
     }
         private void setupCategoriesRecyclerView() {
-        RecyclerView categoriesRecyclerView = findViewById(R.id.categoriesRecyclerView);
+//        RecyclerView categoriesRecyclerView = findViewById(R.id.categoriesRecyclerView);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        categoriesRecyclerView.setLayoutManager(layoutManager);
+//        categoriesRecyclerView.setLayoutManager(layoutManager);
 
         // Sample categories data
         List<Category> categories = new ArrayList<>();
-        categories.add(new Category("Food", R.drawable.elight1));
-        categories.add(new Category("Shopping", R.drawable.elight2));
-        categories.add(new Category("Travel", R.drawable.elight3));
-        categories.add(new Category("Travel", R.drawable.elight4));
-        categories.add(new Category("Travel", R.drawable.elight5));
+        categories.add(new Category("Request Place", R.drawable.elight1));
+        categories.add(new Category("New Places", R.drawable.elight2));
+        categories.add(new Category("Request Inverter", R.drawable.elight3));
+        categories.add(new Category("Other", R.drawable.elight4));
+        categories.add(new Category("Food", R.drawable.elight5));
         categories.add(new Category("Travel", R.drawable.elight3));
         // Add more categories as needed
 
         CategoryAdapter adapter = new CategoryAdapter(this, categories);
-        categoriesRecyclerView.setAdapter(adapter);
+//        categoriesRecyclerView.setAdapter(adapter);
     }
 }

@@ -1,12 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="black">#FF000000</color>
+    <color name="grey">#615E5E</color>
+    <color name="light_grey">#D0CDCD</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="orange1">#F8754B</color>
+    <color name="whiteOverLay">#EDECEC</color>
+
+    <color name="oldOrange1">#F8754B</color>
     <color name="background">#FFFFFFFF</color>
     <color name="outline_color">#999593</color> <!-- Orange outline -->
+    <color name="whiteText">#999593</color> <!-- Orange outline -->
     <color name="bottom_nav_icon_colors">#333333</color>
+    <color name="cool_blue">#1C7283</color>
+
+<!--    <color name="dark_background">#262525</color>-->
+    <color name="dark_background">#504D4D</color>
+    <color name="light_dark_background">#504D4D</color>
     <color name="bottom_nav_text_colors">#555555</color>
 
-    <color name="orange">#FF5722</color>
+    <color name="orange">#1E165D</color>
+    <color name="orange1">#4535C3</color>
+    <color name="oldOrange">#FF5722</color>
 </resources>
