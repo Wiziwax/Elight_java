@@ -1,20 +1,28 @@
 package com.chestnut_java.Entities;
 
+import java.sql.Timestamp;
+
 public class DeviceDetails {
 
-    public DeviceDetails(String id, String serialNumber, String deviceName, String locationName, boolean status) {
+    public DeviceDetails(String id, String serialNumber, String deviceName, String locationName, boolean isActive) {
         this.id = id;
         this.serialNumber = serialNumber;
         this.deviceName = deviceName;
         this.locationName = locationName;
-        this.status = status;
+        this.isActive = isActive;
     }
 
     private String id;
     private String serialNumber;
     private String deviceName;
     private String locationName;
-    private boolean status;
+    private Boolean isActive;
+    private String installedBy;
+    private String locationId;
+    private Timestamp createdDate;
+    private Integer daysRunning;
+    private Double voltage;
+    private Timestamp lastUpdatedDate;
 
     public String getId() {
         return id;
@@ -48,11 +56,67 @@ public class DeviceDetails {
         this.locationName = locationName;
     }
 
-    public boolean isStatus() {
-        return status;
+    public boolean getIsActive() {
+        return isActive;
     }
 
-    public void setStatus(boolean status) {
-        this.status = status;
+    public void setIsActive(boolean isActive) {
+        this.isActive = isActive;
+    }
+
+    public Boolean getActive() {
+        return isActive;
+    }
+
+    public void setActive(Boolean active) {
+        isActive = active;
+    }
+
+    public String getLocationId() {
+        return locationId;
+    }
+
+    public void setLocationId(String locationId) {
+        this.locationId = locationId;
+    }
+
+    public Timestamp getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Timestamp createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public Integer getDaysRunning() {
+        return daysRunning;
+    }
+
+    public void setDaysRunning(Integer daysRunning) {
+        this.daysRunning = daysRunning;
+    }
+
+    public Double getVoltage() {
+        return voltage;
+    }
+
+    public void setVoltage(Double voltage) {
+        this.voltage = voltage;
+    }
+
+    public Timestamp getLastUpdatedDate() {
+        return lastUpdatedDate;
+    }
+
+    public void setLastUpdatedDate(Timestamp lastUpdatedDate) {
+        this.lastUpdatedDate = lastUpdatedDate;
+    }
+
+    public String getInstalledBy() {
+        return installedBy;
+    }
+
+    public void setInstalledBy(String installedBy) {
+        this.installedBy = installedBy;
     }
 }

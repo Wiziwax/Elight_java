@@ -200,27 +200,84 @@
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
                     android:orientation="horizontal"
-                    android:layout_marginTop="5dp"
-                    >
+                    android:layout_marginTop="5dp">
 
+                    <!-- Left LinearLayout -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:layout_marginEnd="5dp"
-                        android:background="@drawable/rounded_gradient_background"></LinearLayout>
+                        android:orientation="vertical"
+                        android:background="@drawable/rounded_gradient_background">
 
 
+                        <!-- Content Area -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:padding="8dp"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/devices_icon"
+                            android:layout_gravity="center_vertical"/>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_gravity="center_vertical"
+
+                                >
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Device Manager"
+                                android:textStyle="bold"
+                                android:textColor="@color/black"
+                                android:layout_marginStart="10dp"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Manage and keep track of our devices"
+                                    android:textAlignment="center"
+                                    android:textSize="10sp"/>
+
+                            </LinearLayout>
+
+
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Right LinearLayout -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginStart="5dp"
                         android:layout_weight="1"
-                        android:background="@drawable/rounded_gradient_background_right"></LinearLayout>
+                        android:layout_marginStart="5dp"
+                        android:orientation="vertical"
+
+                        android:background="@drawable/rounded_gradient_background_right">
+
+
+                        <!-- Content Area -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:padding="10dp"
+                            android:layout_weight="1" />
+                    </LinearLayout>
 
                 </LinearLayout>
 
-<!--                <TextView-->
+
+                <!--                <TextView-->
 <!--                    android:layout_width="wrap_content"-->
 <!--                    android:layout_height="wrap_content"-->
 <!--                    android:layout_marginTop="16dp"-->

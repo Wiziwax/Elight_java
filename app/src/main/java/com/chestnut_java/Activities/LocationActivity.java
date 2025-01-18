@@ -11,21 +11,31 @@ import android.view.animation.DecelerateInterpolator;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.chestnut_java.Adapters.DeviceListAdapter;
+import com.chestnut_java.Entities.AddressEntity;
 import com.chestnut_java.Entities.Area;
 import com.chestnut_java.Adapters.AreaAdapter;
 import com.chestnut_java.Adapters.LocationAdapter;
+import com.chestnut_java.Entities.DeviceDetails;
+import com.chestnut_java.LocationApiService;
 import com.chestnut_java.R;
+import com.chestnut_java.RetrofitClient;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class LocationActivity extends AppCompatActivity {
     private TextView selectedStateText;
@@ -135,7 +145,36 @@ public class LocationActivity extends AppCompatActivity {
         bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
     }
     private void setupStateDropdown() {
-        String[] states = {"Lagos", "Abuja", "Rivers", "Kano"}; // Add all Nigerian states
+        List<String> states = Arrays.asList("Lagos", "Abuja", "Rivers", "Kano"); // Add all Nigerian states
+
+
+
+
+        LocationApiService apiService = RetrofitClient.getInstance().create(LocationApiService.class);
+        apiService.getStates("NIGERIA").enqueue(new Callback<List<String>>() {
+            @Override
+            public void onResponse(Call<List<String>> call, Response<List<String>> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    // No need to map since we're already getting List<String>
+                    updateStateAdapter(response.body());
+                } else {
+                    // Use fallback data
+                    updateStateAdapter(states);
+                    showError("Failed to load states. Using offline data.");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<String>> call, Throwable t) {
+                updateStateAdapter(states);
+//                showError("Network error. Using offline data.");
+            }
+        });
+
+
+
+
+
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_dropdown_item_1line, states);
         stateAutoComplete.setAdapter(adapter);
@@ -146,6 +185,20 @@ public class LocationActivity extends AppCompatActivity {
         });
     }
 
+    private void showError(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+
+    private void updateStateAdapter(List<String> states) {
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(
+                this,
+                android.R.layout.simple_dropdown_item_1line,
+                states
+        );
+        stateAutoComplete.setAdapter(adapter);
+    }
+
     private void setupLocationsRecyclerView() {
         locationsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         locationAdapter = new LocationAdapter(new ArrayList<>(), this::onLocationSelected);
@@ -154,16 +207,28 @@ public class LocationActivity extends AppCompatActivity {
 
     private void loadLocationsForState(String state) {
         List<String> locations = new ArrayList<>();
-        switch(state) {
-            case "Lagos":
-                locations.addAll(Arrays.asList("Ikeja", "Lekki", "Victoria Island", "Lagos"));
-                break;
-            case "Abuja":
-                locations.addAll(Arrays.asList("Wuse", "Garki", "Maitama"));
-                break;
-            // Add cases for other states
-        }
-        locationAdapter.updateLocations(locations);
+
+
+        LocationApiService apiService = RetrofitClient.getInstance().create(LocationApiService.class);
+        apiService.getCities(state).enqueue(new Callback<List<String>>() {
+            @Override
+            public void onResponse(Call<List<String>> call, Response<List<String>> response) {
+                if (response.isSuccessful() && response.body() != null) {
+//                    updateCityAdapter(response.body());
+                    locationAdapter.updateLocations(response.body());
+                } else {
+                    // Use fallback data
+                    showError("Failed to load cities. Using offline data.");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<String>> call, Throwable t) {
+//                updateCityAdapter();
+                showError("Network error. Using offline data.");
+            }
+        });
+
     }
 
     private void onLocationSelected(String location) {
@@ -264,19 +329,48 @@ public class LocationActivity extends AppCompatActivity {
 
     private void loadAreasForState(String state) {
         List<Area> areas = new ArrayList<>();
-        switch (state) {
-            case "Lagos":
-                areas.add(new Area("1", "Ikeja", "3", "LA-01"));
-                areas.add(new Area("2", "Lekki", "5", "LA-02"));
-                break;
-            case "Ikeja":
-                areas.add(new Area("3", "Wuse", "2", "AB-01"));
-                areas.add(new Area("4", "Garki", "4", "AB-02"));
-                break;
-            // Add cases for other states
-        }
-        areaAdapter.updateAreas(areas);
+
+        LocationApiService apiService = RetrofitClient.getInstance().create(LocationApiService.class);
+        Call<List<Area>> call = apiService.getLocationsObject(state);
+
+
+        call.enqueue(new Callback<List<Area>>() {
+            @Override
+            public void onResponse(Call<List<Area>> call, Response<List<Area>> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    List<Area> addressEntities = response.body();
+                    areaAdapter.updateAreas(addressEntities);
+//                    adapter = new DeviceListAdapter(DeviceListActivity.this, devices);
+//                    recyclerView.setAdapter(adapter);
+                } else {
+                    Toast.makeText(LocationActivity.this, "Failed to retrieve locations", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Area>> call, Throwable t) {
+                Toast.makeText(LocationActivity.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
+
+//        switch (state) {
+//            case "Lagos":
+//                areas.add(new Area("1", "Ikeja", "3", "LA-01"));
+//                areas.add(new Area("2", "Lekki", "5", "LA-02"));
+//                break;
+//            case "Ikeja":
+//                areas.add(new Area("3", "Wuse", "2", "AB-01"));
+//                areas.add(new Area("4", "Garki", "4", "AB-02"));
+//                break;
+//            // Add cases for other states
+//        }
+
+
+
+
+
 
     private void onAreaSelected(Area area) {
         String selectedState = stateAutoComplete.getText().toString();

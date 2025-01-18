@@ -48,16 +48,17 @@ public class DeviceListAdapter extends RecyclerView.Adapter<DeviceListAdapter.De
         holder.subText.setText(device.getLocationName());
 
         // Set the startIcon based on the device status
-        if (device.isStatus()) {
-            holder.startIcon.setImageResource(R.drawable.power); // Replace with your active icon drawable
+        if (device.getIsActive()) {
+            holder.startIcon.setImageResource(R.drawable.power_teal_big); // Replace with your active icon drawable
         } else {
-            holder.startIcon.setImageResource(R.drawable.google); // Replace with your inactive icon drawable
+            holder.startIcon.setImageResource(R.drawable.power_red_big); // Replace with your inactive icon drawable
         }
 
         // Set OnClickListener to open a new activity
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, DeviceActivity.class);
             // Optionally pass data using intent.putExtra("key", value);
+            intent.putExtra("deviceId", device.getId());
             context.startActivity(intent);
         });
     }

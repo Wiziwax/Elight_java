@@ -77,6 +77,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/deviceInfoSerialNumber"
                     android:text="JSIOWISISSIISINISNCINSINCISNCISNCISNCISNCSICNSICNSICNSICNSICNSI8sksisisjsjsn jc uncusncusncusncusjnc us csuc sucnsuncuwsn8w9wjnsadinsicxmsdjowjowi"/>
             </LinearLayout>
 
@@ -84,6 +85,52 @@
             </LinearLayout>
         </LinearLayout>
 
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:id="@+id/deviceNameLayout"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+                <LinearLayout
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="0dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Device Name:"
+                        android:textStyle="bold"/>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/deviceNameInfo"
+                        android:text="JSIOWISISSIISINISNCINSINCISNCISNCISNCISNCSICNSICNSICNSICNSICNSI8sksisisjsjsn jc uncusncusncusncusjnc us csuc sucnsuncuwsn8w9wjnsadinsicxmsdjowjowi"/>
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -123,6 +170,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/deviceInfoInstalledBy"
                         android:text="JSIOWISISSIISINISNCINSINCISNCISNCISNCISNCSICNSICNSICNSICNSICNSI8sksisisjsjsn jc uncusncusncusncusjnc us csuc sucnsuncuwsn8w9wjnsadinsicxmsdjowjowi"/>
                 </LinearLayout>
 
@@ -169,6 +217,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/deviceInfoInstalledOn"
                         android:text="JSIOWISISSIISINISNCINSINCISNCISNCISNCISNCSICNSICNSICNSICNSICNSI8sksisisjsjsn jc uncusncusncusncusjnc us csuc sucnsuncuwsn8w9wjnsadinsicxmsdjowjowi"/>
                 </LinearLayout>
 
@@ -215,6 +264,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/deviceInfoLocation"
                         android:text="JSIOWISISSIISINISNCINSINCISNCISNCISNCISNCSICNSICNSICNSICNSICNSI8sksisisjsjsn jc uncusncusncusncusjnc us csuc sucnsuncuwsn8w9wjnsadinsicxmsdjowjowi"/>
                 </LinearLayout>
 
@@ -261,6 +311,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/deviceInfoStatus"
                         android:text="Inactive"/>
                 </LinearLayout>
 
@@ -307,6 +358,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/deviceInfoVoltageReading"
                         android:text="0V"/>
                 </LinearLayout>
 
@@ -351,6 +403,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/deviceInfoRunningTime"
                         android:text="0 Days"/>
                 </LinearLayout>
 

@@ -3,15 +3,22 @@ package com.chestnut_java.Activities;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.chestnut_java.Adapters.LocationDeviceAdapter;
+import com.chestnut_java.Entities.DeviceDetails;
 import com.chestnut_java.R;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class LocationDeviceActivity extends AppCompatActivity {
+
+    private RecyclerView recyclerView;
+    private LocationDeviceAdapter adapter;
+    private List<DeviceDetails> deviceDetailsList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +32,19 @@ public class LocationDeviceActivity extends AppCompatActivity {
 
         // Load devices based on the areaId
         loadDevices(areaId);
+
+
+
+        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        // Sample data
+        deviceDetailsList = new ArrayList<>();
+        deviceDetailsList.add(new DeviceDetails("1", "SN12345", "Device A", "Broad Street", true));
+        deviceDetailsList.add(new DeviceDetails("2", "SN67890", "Device B", "Park Lane", false));
+
+        adapter = new LocationDeviceAdapter(deviceDetailsList, this);
+        recyclerView.setAdapter(adapter);
     }
 
     private void loadDevices(String areaId) {

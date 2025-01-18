@@ -42,10 +42,10 @@ public class HomeActivity extends AppCompatActivity {
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
 
         // Set status bar color (top bar)
-        window.setStatusBarColor(getResources().getColor(R.color.white));
+        window.setStatusBarColor(getResources().getColor(R.color.black));
 
         // Set navigation bar color (bottom system buttons)
-        window.setNavigationBarColor(getResources().getColor(R.color.white));
+        window.setNavigationBarColor(getResources().getColor(R.color.black));
 
         // Make the status bar icons dark (since we're using a light background)
         View decorView = window.getDecorView();

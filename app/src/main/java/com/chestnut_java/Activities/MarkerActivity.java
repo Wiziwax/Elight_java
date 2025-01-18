@@ -7,13 +7,17 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.chestnut_java.Entities.AddressEntity;
 import com.chestnut_java.Entities.CustomMarker;
+import com.chestnut_java.LocationApiService;
 import com.chestnut_java.MarkerDatabase;
 import com.chestnut_java.R;
+import com.chestnut_java.RetrofitClient;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -28,6 +32,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MarkerActivity extends AppCompatActivity implements OnMapReadyCallback {
     private GoogleMap mMap;
@@ -101,11 +109,22 @@ public class MarkerActivity extends AppCompatActivity implements OnMapReadyCallb
         EditText titleInput = dialogView.findViewById(R.id.marker_title);
         EditText descriptionInput = dialogView.findViewById(R.id.marker_description);
 
+        descriptionInput.setText(address);
+//        String address1 = "11 Idahosa St, Avbiama, Benin City 300102, Edo, Nigeria";
+        parseAddress(address);
+        AddressEntity entity = parseAddress(address);
+        System.out.println(entity);
+        entity.setLatitude(String.valueOf(position.latitude));
+        entity.setLongitude(String.valueOf(position.longitude));
+
+        createLocation(entity);
         builder.setView(dialogView)
                 .setTitle("Add New Marker")
                 .setPositiveButton("Save", (dialog, which) -> {
                     String title = titleInput.getText().toString();
                     String description = descriptionInput.getText().toString();
+
+
 
                     // Create and save marker
                     CustomMarker marker = new CustomMarker(
@@ -200,4 +219,107 @@ public class MarkerActivity extends AppCompatActivity implements OnMapReadyCallb
         }, interval);
     }
 
+
+
+
+    public static AddressEntity parseAddress(String address) {
+        AddressEntity entity = new AddressEntity();
+
+        // Split the address by commas
+        String[] parts = address.split(",");
+
+        // Trim whitespace from each part
+        for (int i = 0; i < parts.length; i++) {
+            parts[i] = parts[i].trim();
+        }
+
+        // Parse from the end of the array
+        int len = parts.length;
+
+        if (len >= 1) {
+            entity.setCountry(parts[len - 1]); // Country is the last part
+        }
+        if (len >= 2) {
+            entity.setState(parts[len - 2]); // State is the second to last part
+        }
+        if (len >= 3) {
+            // Extract city and zip code from the third to last part
+            String cityPart = parts[len - 3];
+            String[] cityAndZip = cityPart.split(" ");
+            StringBuilder cityBuilder = new StringBuilder();
+            String zipCode = "";
+
+            for (String part : cityAndZip) {
+                if (part.matches("\\d{5,}")) { // Check for 5+ digit number
+                    zipCode = part;
+                } else {
+                    if (cityBuilder.length() > 0) {
+                        cityBuilder.append(" ");
+                    }
+                    cityBuilder.append(part);
+                }
+            }
+
+            entity.setCity(cityBuilder.toString());
+            entity.setZip(zipCode);
+        }
+        if (len >= 4) {
+            // Combine the remaining parts as the street address
+            StringBuilder street = new StringBuilder();
+            for (int i = 0; i < len - 3; i++) {
+                street.append(parts[i]);
+                if (i < len - 4) {
+                    street.append(", ");
+                }
+            }
+            entity.setStreet(street.toString());
+        }
+
+        return entity;
+    }
+
+
+    public void createLocation(AddressEntity addressEntity){
+
+        // Show loading indicator
+        showLoading();
+
+        LocationApiService apiService = RetrofitClient.getInstance().create(LocationApiService.class);
+        // Make API call
+        apiService.registerLocation(addressEntity).enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                hideLoading();
+                if (response.isSuccessful()) {
+                    showSuccess("Location registered successfully!");
+                    // Maybe navigate back or clear form
+                } else {
+                    showError("Failed to register location. Please try again.");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                hideLoading();
+                showError("Network error. Please check your connection.");
+            }
+        });
+    }
+
+
+    private void showLoading() {
+        // Show a progress dialog or disable submit button
+    }
+
+    private void hideLoading() {
+        // Hide progress dialog or enable submit button
+    }
+
+    private void showSuccess(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    private void showError(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
 }

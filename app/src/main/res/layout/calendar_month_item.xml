@@ -5,19 +5,19 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <EditText
-        android:id="@+id/marker_title"
+    <TextView
+        android:id="@+id/month_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter marker title"
-        android:inputType="text" />
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp"/>
 
-    <EditText
-        android:id="@+id/marker_description"
+    <GridLayout
+        android:id="@+id/days_grid"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter marker location"
-        android:inputType="textMultiLine"
-        android:minLines="2" />
+        android:columnCount="7"
+        android:alignmentMode="alignBounds"/>
 
 </LinearLayout>

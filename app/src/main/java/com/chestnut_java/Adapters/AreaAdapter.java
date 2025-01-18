@@ -1,5 +1,6 @@
 package com.chestnut_java.Adapters;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import java.util.List;
 public class AreaAdapter extends RecyclerView.Adapter<AreaAdapter.AreaViewHolder> {
 
     private final List<Area> areas;
+//    private final List<Area> areas;
     private final OnAreaClickListener onAreaClickListener;
 
     public AreaAdapter(List<Area> areas, OnAreaClickListener onAreaClickListener) {
@@ -30,13 +32,14 @@ public class AreaAdapter extends RecyclerView.Adapter<AreaAdapter.AreaViewHolder
         return new AreaViewHolder(view);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull AreaViewHolder holder, int position) {
         Area area = areas.get(position);
 
-        holder.mainText.setText(area.getAreaName());
-        holder.subText.setText(area.getAreaCode());
-        holder.deviceCountText.setText(area.getNumberOfDevices() + " devices found");
+        holder.mainText.setText(area.getStreet());
+        holder.subText.setText(area.getZip());
+//        holder.deviceCountText.setText(area.getNumberOfDevices() + " devices found");
 
         // Handle click events
         holder.itemView.setOnClickListener(v -> onAreaClickListener.onAreaClick(area));

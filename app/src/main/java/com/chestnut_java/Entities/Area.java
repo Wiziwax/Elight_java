@@ -2,17 +2,17 @@ package com.chestnut_java.Entities;
 
 public class Area {
 
-    public Area(String id, String areaName, String numberOfDevices, String areaCode) {
+    public Area(String id, String street, String numberOfDevices, String zip) {
         this.id = id;
-        this.areaName = areaName;
+        this.street = street;
         this.numberOfDevices = numberOfDevices;
-        this.areaCode = areaCode;
+        this.zip = zip;
     }
 
     private String id;
-    private String areaName;
+    private String street;
     private String numberOfDevices;
-    private String areaCode;
+    private String zip;
 
     public String getId() {
         return id;
@@ -22,12 +22,12 @@ public class Area {
         this.id = id;
     }
 
-    public String getAreaName() {
-        return areaName;
+    public String getStreet() {
+        return street;
     }
 
-    public void setAreaName(String areaName) {
-        this.areaName = areaName;
+    public void setStreet(String street) {
+        this.street = street;
     }
 
     public String getNumberOfDevices() {
@@ -38,11 +38,11 @@ public class Area {
         this.numberOfDevices = numberOfDevices;
     }
 
-    public String getAreaCode() {
-        return areaCode;
+    public String getZip() {
+        return zip;
     }
 
-    public void setAreaCode(String areaCode) {
-        this.areaCode = areaCode;
+    public void setZip(String zip) {
+        this.zip = zip;
     }
 }

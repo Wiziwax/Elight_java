@@ -13,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:background="@color/orange"
         android:padding="5dp">
 
         <LinearLayout
@@ -28,6 +29,7 @@
                 android:layout_height="wrap_content"
                 android:text="Register Device"
                 android:textSize="18sp"
+                android:textColor="@color/white"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -37,7 +39,6 @@
             android:layout_marginHorizontal="5dp"
             android:layout_marginTop="5dp" />
     </LinearLayout>
-
     <!-- Sub-header Section -->
     <LinearLayout
         android:id="@+id/subHeaderRegisterDeviceLayout"
@@ -70,14 +71,37 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/subHeaderRegisterDeviceLayout"
-        android:fillViewport="true">
+        android:fillViewport="true"
+        android:id="@+id/theScroll"
+        android:fadeScrollbars="false"
+        android:scrollbarStyle="outsideOverlay">
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:id="@+id/contentLayout"
             android:paddingHorizontal="20dp"
-            android:paddingBottom="20dp">
+            android:paddingBottom="100dp">
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/deviceNameInputLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/deviceNameInputField"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Choose a desired title"
+                    android:inputType="text"
+                    android:textSize="15sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
 
             <!-- Physical Details Section -->
             <TextView
@@ -136,6 +160,14 @@
                         android:layout_height="wrap_content"
                         android:hint="Country"
                         android:inputType="none" />
+
+                    <ProgressBar
+                        android:id="@+id/countryProgress"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="end|center_vertical"
+                        android:layout_marginEnd="8dp"
+                        android:visibility="gone" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <!-- State dropdown -->
@@ -153,6 +185,14 @@
                         android:layout_height="wrap_content"
                         android:hint="State"
                         android:inputType="none" />
+
+                    <ProgressBar
+                        android:id="@+id/stateProgress"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="end|center_vertical"
+                        android:layout_marginEnd="8dp"
+                        android:visibility="gone" />
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
 
@@ -170,6 +210,14 @@
                     android:layout_height="wrap_content"
                     android:hint="City"
                     android:inputType="none" />
+
+                <ProgressBar
+                    android:id="@+id/cityProgress"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="end|center_vertical"
+                    android:layout_marginEnd="8dp"
+                    android:visibility="gone" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Street Address Section -->
@@ -200,19 +248,37 @@
                 <!-- Street Name -->
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/streetLayout"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:layout_weight="2">
+                    android:layout_weight="3">
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/streetInput"
+<!--                    <com.google.android.material.textfield.TextInputEditText-->
+<!--                        android:id="@+id/streetInput"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:hint="Street Name"-->
+<!--                        android:inputType="text"-->
+<!--                        android:textSize="15sp" />-->
+
+                    <AutoCompleteTextView
+                        android:id="@+id/streetAutoComplete"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Street Name"
-                        android:inputType="text"
-                        android:textSize="15sp" />
+                        android:maxLines="1"
+                        android:ellipsize="end"
+                        android:scrollHorizontally="true"
+                        android:inputType="text" />
+
+                    <ProgressBar
+                        android:id="@+id/streetProgress"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="end|center_vertical"
+                        android:layout_marginEnd="8dp"
+                        android:visibility="gone" />
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
 
@@ -268,6 +334,7 @@
                 android:paddingVertical="10dp"
                 android:layout_marginHorizontal="30dp"
                 android:orientation="vertical"
+                android:id="@+id/submitLayout"
                 android:background="@drawable/rounded_button">
 
                 <TextView
@@ -278,7 +345,20 @@
                     android:textColor="@android:color/white"
                     android:textSize="18sp" />
             </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:id="@+id/adjuster"
+
+                android:orientation="vertical">
+
+            </LinearLayout>
         </LinearLayout>
+
+
     </ScrollView>
+
 
 </RelativeLayout>
