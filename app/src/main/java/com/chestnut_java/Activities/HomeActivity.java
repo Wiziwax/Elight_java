@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -20,6 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.chestnut_java.Entities.Category;
 import com.chestnut_java.Adapters.CategoryAdapter;
+import com.chestnut_java.ProfileActivity;
 import com.chestnut_java.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -78,7 +81,7 @@ public class HomeActivity extends AppCompatActivity {
                     return true;
 
                 } else if (itemId == R.id.navigation_profile) {
-                    Intent intent = new Intent(HomeActivity.this, DeviceListActivity.class);
+                    Intent intent = new Intent(HomeActivity.this, ProfileActivity.class);
                     startActivity(intent);
                     return true;
                 }
@@ -92,6 +95,9 @@ public class HomeActivity extends AppCompatActivity {
         // Find the CardView by ID
         CardView mainCardMap = findViewById(R.id.mainCardMap);
         CardView bottomCard = findViewById(R.id.card2HomeActivity);
+        LinearLayout deviceManagerLayout = findViewById(R.id.homeActivityDeviceManager);
+        LinearLayout favouritesLayout = findViewById(R.id.homeActivityFavourites);
+
 
         ImageView cardImage = findViewById(R.id.cardImage);
 //        Glide.with(this)
@@ -111,6 +117,19 @@ public class HomeActivity extends AppCompatActivity {
             Intent intent = new Intent(HomeActivity.this, RegisterDeviceActivity.class);
             startActivity(intent);
         });
+        deviceManagerLayout.setOnClickListener(v -> {
+            // Intent to navigate to another activity
+            Intent intent = new Intent(HomeActivity.this, DeviceListActivity.class);
+            startActivity(intent);
+        });
+
+         favouritesLayout.setOnClickListener(v -> {
+                    // Intent to navigate to another activity
+//                    Intent intent = new Intent(HomeActivity.this, DeviceListActivity.class);
+//                    startActivity(intent);
+
+             Toast.makeText(this, "Sorry, currently\n unavailable", Toast.LENGTH_SHORT).show();
+                });
 
     }
         private void setupCategoriesRecyclerView() {

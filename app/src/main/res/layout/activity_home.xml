@@ -206,6 +206,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:id="@+id/homeActivityDeviceManager"
                         android:layout_weight="1"
                         android:layout_marginEnd="5dp"
                         android:orientation="vertical"
@@ -262,7 +263,7 @@
                         android:layout_weight="1"
                         android:layout_marginStart="5dp"
                         android:orientation="vertical"
-
+                        android:id="@+id/homeActivityFavourites"
                         android:background="@drawable/rounded_gradient_background_right">
 
 
@@ -271,7 +272,43 @@
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:padding="10dp"
-                            android:layout_weight="1" />
+                            android:layout_weight="1">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    android:src="@drawable/gold_favourite"
+                                    android:layout_gravity="center_vertical"
+                                    android:id="@+id/homePageFavourite"/>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_margin="10dp"
+                                    android:orientation="vertical"
+                                    android:gravity="center_vertical">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Favourites"
+                                        android:textColor="@color/black"
+                                        android:textStyle="bold"
+                                        android:layout_gravity="center_horizontal"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textAlignment="center"
+                                    android:text="View your favourite places"
+                                    android:textSize="10sp"/>
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
                     </LinearLayout>
 
                 </LinearLayout>
@@ -350,8 +387,8 @@
                                     android:layout_height="wrap_content"
                                     android:gravity="center"
                                     android:paddingHorizontal="16dp"
-                                    android:paddingVertical="7dp"
-                                    android:text="Add Device"
+                                    android:paddingVertical="10dp"
+                                    android:text="Coming soon"
                                     android:textColor="@android:color/white"
                                     android:textSize="11sp" />
                             </androidx.cardview.widget.CardView>

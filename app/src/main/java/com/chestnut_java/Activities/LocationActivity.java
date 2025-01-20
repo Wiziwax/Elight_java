@@ -313,16 +313,17 @@ public class LocationActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onDeviceCountClick(String areaId) {
-                openDeviceDetailsActivity(areaId);
+            public void onDeviceCountClick(String areaId, String areaName) {
+                openDeviceDetailsActivity(areaId, areaName);
             }
         });
         areaRecyclerView.setAdapter(areaAdapter);
     }
 
-    private void openDeviceDetailsActivity(String areaId) {
+    private void openDeviceDetailsActivity(String areaId, String areaName) {
         Intent intent = new Intent(this, LocationDeviceActivity.class);
         intent.putExtra("AREA_ID", areaId);
+        intent.putExtra("AREA_NAME", areaName);
         startActivity(intent);
     }
 

@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:id="@+id/main"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <!-- Header with notification icon -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/orange"
+        android:layout_marginBottom="24dp"
+        android:gravity="center"
+        android:paddingVertical="5dp"
+        android:elevation="5dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Profile"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"/>
+
+        <!--            <ImageButton-->
+        <!--                android:id="@+id/notificationButton"-->
+        <!--                android:layout_width="24dp"-->
+        <!--                android:layout_height="24dp"-->
+        <!--                android:layout_alignParentEnd="true"-->
+        <!--                android:background="?attr/selectableItemBackgroundBorderless"-->
+        <!--                android:src="@drawable/notification"-->
+        <!--                android:contentDescription="Notifications"/>-->
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+
+        <!-- Profile Section -->
+        <LinearLayout
+            android:id="@+id/profileSection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:layout_marginBottom="32dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profileImage"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/elight4"
+                app:civ_border_width="2dp"
+                app:civ_border_color="@color/orange"
+                android:layout_marginBottom="16dp"/>
+
+            <TextView
+                android:id="@+id/userName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Senior Man"
+                android:textSize="20sp"
+                android:textColor="#333333"
+                android:layout_marginBottom="4dp"/>
+
+            <TextView
+                android:id="@+id/userEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="seniorman@gmail.com"
+                android:textColor="#666666"/>
+        </LinearLayout>
+
+        <!-- Menu Items -->
+        <LinearLayout
+            android:id="@+id/menuContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardElevation="0dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="#EEEEEE">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!-- My Profile -->
+                    <LinearLayout
+                        style="@style/MenuItemStyle"
+                        android:id="@+id/myProfileItem">
+                        <ImageView
+                            style="@style/MenuIconStyle"
+                            android:src="@drawable/profile"/>
+                        <TextView
+                            style="@style/MenuTextStyle"
+                            android:text="My Profile"/>
+                        <ImageView
+                            style="@style/MenuArrowStyle"
+                            android:src="@drawable/arrow_right"/>
+                    </LinearLayout>
+
+                    <!-- Settings -->
+                    <LinearLayout
+                        style="@style/MenuItemStyle"
+                        android:id="@+id/settingsItem">
+                        <ImageView
+                            style="@style/MenuIconStyle"
+                            android:src="@drawable/settings"/>
+                        <TextView
+                            style="@style/MenuTextStyle"
+                            android:text="Settings"/>
+                        <ImageView
+                            style="@style/MenuArrowStyle"
+                            android:src="@drawable/arrow_right"/>
+                    </LinearLayout>
+
+                    <!-- Notifications -->
+                    <LinearLayout
+                        style="@style/MenuItemStyle"
+                        android:id="@+id/notificationsItem">
+                        <ImageView
+                            style="@style/MenuIconStyle"
+                            android:src="@drawable/notification"/>
+                        <TextView
+                            style="@style/MenuTextStyle"
+                            android:text="Notifications"/>
+                        <ImageView
+                            style="@style/MenuArrowStyle"
+                            android:src="@drawable/arrow_right"/>
+                    </LinearLayout>
+
+                    <!-- FAQs -->
+                    <LinearLayout
+                        style="@style/MenuItemStyle"
+                        android:id="@+id/faqsItem">
+                        <ImageView
+                            style="@style/MenuIconStyle"
+                            android:src="@drawable/chat"/>
+                        <TextView
+                            style="@style/MenuTextStyle"
+                            android:text="FAQs"/>
+                        <ImageView
+                            style="@style/MenuArrowStyle"
+                            android:src="@drawable/arrow_right"/>
+                    </LinearLayout>
+
+                    <!-- Share -->
+                    <LinearLayout
+                        style="@style/MenuItemStyle"
+                        android:id="@+id/shareItem">
+                        <ImageView
+                            style="@style/MenuIconStyle"
+                            android:src="@drawable/share"/>
+                        <TextView
+                            style="@style/MenuTextStyle"
+                            android:text="Share"/>
+                        <ImageView
+                            style="@style/MenuArrowStyle"
+                            android:src="@drawable/arrow_right"/>
+                    </LinearLayout>
+
+                    <!-- Log Out -->
+                    <LinearLayout
+                        style="@style/MenuItemStyle"
+                        android:id="@+id/logOutItem">
+                        <ImageView
+                            style="@style/MenuIconStyle"
+                            android:src="@drawable/logout"/>
+                        <TextView
+                            style="@style/MenuTextStyle"
+                            android:text="Log Out"/>
+                        <ImageView
+                            style="@style/MenuArrowStyle"
+                            android:src="@drawable/arrow_right"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+    </LinearLayout>
+
+<!--    &lt;!&ndash; Bottom Navigation &ndash;&gt;-->
+<!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
+<!--        android:id="@+id/bottomNavigation"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="bottom"-->
+<!--        app:menu="@menu/bottom_nav_menu"/>-->
+</LinearLayout>

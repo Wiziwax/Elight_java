@@ -47,7 +47,7 @@ public class AreaAdapter extends RecyclerView.Adapter<AreaAdapter.AreaViewHolder
         // Handle click events for deviceCountText
         holder.deviceCountText.setOnClickListener(v -> {
             // Call a specific method for handling device count clicks
-            onAreaClickListener.onDeviceCountClick(area.getId());
+            onAreaClickListener.onDeviceCountClick(area.getId(), area.getStreet());
         });
     }
 
@@ -75,7 +75,7 @@ public class AreaAdapter extends RecyclerView.Adapter<AreaAdapter.AreaViewHolder
 
     public interface OnAreaClickListener {
         void onAreaClick(Area area);
-        void onDeviceCountClick(String areaId); // New method
+        void onDeviceCountClick(String areaId, String areaName); // New method
     }
 
 }

@@ -51,7 +51,7 @@
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_gravity="center_vertical"
-            android:src="@drawable/power"
+            android:src="@drawable/menu"
             android:contentDescription="Open Details"
             android:layout_marginStart="8dp" />
     </LinearLayout>

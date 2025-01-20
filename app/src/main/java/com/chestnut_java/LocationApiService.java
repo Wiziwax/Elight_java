@@ -2,6 +2,7 @@ package com.chestnut_java;
 
 import com.chestnut_java.Entities.AddressEntity;
 import com.chestnut_java.Entities.Area;
+import com.chestnut_java.Entities.DeviceLogLocation;
 import com.chestnut_java.Entities.DeviceRegistrationRequest;
 
 import java.util.List;
@@ -34,4 +35,7 @@ public interface LocationApiService {
 
     @POST("locations/register") // Replace with your actual endpoint
     Call<Void> registerLocation(@Body AddressEntity request);
+
+    @GET("device/log/locationId")
+    Call<List<DeviceLogLocation>> getDeviceLogByLocationId(@Query("locationId") String locationId);
 }
